@@ -59,7 +59,10 @@ group :test do
   gem 'guard-rspec'
   gem 'launchy'
   gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'factory_bot_rails', :require => false
+  gem 'shoulda-matchers'
+  gem 'bcrypt'
+# Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
 

@@ -93,4 +93,37 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+def create_jill_with_link
+  let(:jill) { User.create!(username: 'jill_bruce', password: 'abcdef') }
+  let(:jill_link) { jill.links.create!(title: 'Jill Link', url: 'cats.com') }
+end
+
+def sign_up(username)
+  visit new_user_path
+  fill_in 'Username', with: username
+  fill_in 'Password', with: 'abcdef'
+  click_button 'Sign Up'
+end
+
+def sign_up_as_ginger_baker
+  sign_up('ginger_baker')
+end
+
+def sign_in(username)
+  visit new_session_path
+  fill_in 'Username', with: username
+  fill_in 'Password', with: 'abcdef'
+  click_button 'Sign In'
+end
+
+def make_link(title = nil, url = nil)
+  title ||= 'reddit'
+  url ||= 'http://www.reddit.com'
+
+  visit new_link_path
+  fill_in 'Title', with: title
+  fill_in 'URL', with: url
+  click_button 'Create New Link'
+end
+
 end
